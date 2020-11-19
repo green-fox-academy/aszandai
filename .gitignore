@@ -31,6 +31,8 @@ Temporary Items
 # Compiled class file
 *.class
 
+*.idea
+
 # Log file
 *.log
 
