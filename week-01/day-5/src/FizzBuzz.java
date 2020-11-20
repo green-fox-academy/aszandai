@@ -9,10 +9,12 @@ public class FizzBuzz {
             if ((i % 3) == 0 && (i % 5) == 0) {
                 System.out.println("FizzBuzz");
                 continue;
-            } if ((i % 3) == 0) {
+            }
+            if ((i % 3) == 0) {
                 System.out.println("Fizz");
                 continue;
-            } if ((i % 5) == 0) {
+            }
+            if ((i % 5) == 0) {
                 System.out.println("Buzz");
                 continue;
             }
