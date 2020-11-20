@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ParameticAverage {
+public class ParametricAverage {
     public static void main(String[] args) {
         // Write a program that asks for a number.
         // It would ask this many times to enter an integer,
@@ -11,7 +11,7 @@ public class ParameticAverage {
 
         Scanner scanner = new Scanner(System.in);
 
-        double sum = 0;
+        int sum = 0;
         double average = 0;
 
         System.out.println("Please enter the number of repeats:");
@@ -21,8 +21,8 @@ public class ParameticAverage {
             System.out.println("Enter a number:");
             int addNumber = scanner.nextInt();
             sum = sum + addNumber;
-            average = sum / endNumber;
         }
+        average = sum / endNumber;
         System.out.println("Sum: " + sum + ", Average: " + average);
     }
 }

@@ -27,7 +27,6 @@ public class DrawSquare {
                 }
                 if (columns == 1 || columns == readNum) {
                     System.out.print("%");
-                    continue;
                 }
                 else System.out.print(" ");
             }
