@@ -14,11 +14,12 @@ public class SwapElements {
 //        String temp = orders[0];
 //        orders[0] = orders[2];
 //        orders[2] = temp;
+//        System.out.println(Arrays.toString(orders));
 
         Collections.swap(Arrays.asList(orders), 0, 2);
-//        Neten talalt megoldas.
-//        pro: mukodik
-//        con: lista, amit meg nem vettunk
+//        Neten talalt megoldas
+//         - pro: mukodik a swap;
+//         - con: lista, amit meg nem "tanultunk".
 
         System.out.println(Arrays.toString(orders));
     }
