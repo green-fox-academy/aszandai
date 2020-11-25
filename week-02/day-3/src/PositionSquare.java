@@ -5,32 +5,29 @@ import java.util.Random;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class FourRectangles {
+public class PositionSquare {
 
     public static void mainDraw(Graphics graphics) {
-        // draw four different size and color rectangles.
+        // create a function that draws one square and takes 3 parameters:
+        // the x and y coordinates of the square's top left corner and the graphics
+        // and draws a 50x50 square from that point.
+        // draw 3 squares with that function.
         // avoid code duplication.
 
         Random random = new Random();
         int x1 = random.nextInt(WIDTH);
         int y1 = random.nextInt(HEIGHT);
-        int sizeW = random.nextInt(50);
-        int sizeH = random.nextInt(50);
+        int size = 50;
 
-        int counter = 1;
+        int counter = 3;
 
-        while (counter <= 4) {
-            int red = random.nextInt(256);
-            int green = random.nextInt(256);
-            int blue = random.nextInt(256);
-            graphics.setColor(new Color(red, green, blue));
-            graphics.drawRect(x1, y1, sizeW, sizeH);
+        for (int i = 0; i < counter; i++) {
+            graphics.drawRect(x1, y1, size, size);
             x1 = random.nextInt(WIDTH);
             y1 = random.nextInt(HEIGHT);
-            sizeW = random.nextInt(50);
-            sizeH = random.nextInt(50);
-            counter++;
         }
+
+
     }
 
     // Don't touch the code below
@@ -55,4 +52,5 @@ public class FourRectangles {
             mainDraw(graphics);
         }
     }
+
 }

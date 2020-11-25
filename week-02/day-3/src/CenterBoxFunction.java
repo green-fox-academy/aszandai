@@ -5,32 +5,29 @@ import java.util.Random;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
-public class FourRectangles {
+public class CenterBoxFunction {
 
-    public static void mainDraw(Graphics graphics) {
-        // draw four different size and color rectangles.
+    public static void mainDraw(Graphics graphics){
+        // create a function that draws one square and takes 2 parameters:
+        // the square size and the graphics
+        // and draws a square of that size to the center of the canvas.
+        // draw 3 squares with that function.
         // avoid code duplication.
 
         Random random = new Random();
-        int x1 = random.nextInt(WIDTH);
-        int y1 = random.nextInt(HEIGHT);
-        int sizeW = random.nextInt(50);
-        int sizeH = random.nextInt(50);
+
+        int middleX = (WIDTH / 2);
+        int middleY = (HEIGHT / 2);
+        int size = random.nextInt(160);
 
         int counter = 1;
 
-        while (counter <= 4) {
-            int red = random.nextInt(256);
-            int green = random.nextInt(256);
-            int blue = random.nextInt(256);
-            graphics.setColor(new Color(red, green, blue));
-            graphics.drawRect(x1, y1, sizeW, sizeH);
-            x1 = random.nextInt(WIDTH);
-            y1 = random.nextInt(HEIGHT);
-            sizeW = random.nextInt(50);
-            sizeH = random.nextInt(50);
+        while(counter <= 3 ) {
+            graphics.drawRect(middleX, middleY, size, size);
+            size = random.nextInt(160);
             counter++;
         }
+
     }
 
     // Don't touch the code below
