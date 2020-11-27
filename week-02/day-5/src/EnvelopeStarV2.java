@@ -12,7 +12,6 @@ public class EnvelopeStarV2 {
         int step = full / 40;
 
         drawEnvelopeStar(graphics, zero, mid, full, step);
-
     }
 
     private static void drawEnvelopeStar(Graphics graphics, int zero, int mid, int full, int step) {

@@ -18,8 +18,8 @@ public class EnvelopeStar {
             mid -= step;
         }
 
-        zero = 0;
-        mid = 160;
+//        zero = 0;
+//        mid = 160;
 
         for (int i = 0; mid < WIDTH; i++) {
             graphics.setColor(new Color(97, 173, 5));
