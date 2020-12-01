@@ -9,7 +9,7 @@ public class EnvelopeStarV2 {
         int zero = 0;
         int mid = HEIGHT / 2;
         int full = HEIGHT;
-        int step = full / 40;
+        int step = full / 50;
 
         drawEnvelopeStar(graphics, zero, mid, full, step);
     }
@@ -59,8 +59,8 @@ public class EnvelopeStarV2 {
 
 
     // Don't touch the code below
-    static int WIDTH = 320;
-    static int HEIGHT = 320;
+    static int WIDTH = 500;
+    static int HEIGHT = 500;
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame("Drawing");
