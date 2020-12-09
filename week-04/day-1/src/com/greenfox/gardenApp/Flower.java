@@ -5,13 +5,12 @@ package com.greenfox.gardenApp;
 //       - when watering it the flower can only absorb the 75% of the water
 //       - eg. watering with 10 the flower's amount of water should only increase with 7.5
 
-public class Flower extends Garden {
+public class Flower extends Plants {
     double waterLoss = 0.75;
     int threshold = 5;
 
     public Flower(String color) {
         this.color = color;
-        currentWaterAmount = 0;
     }
 
     public void needsWater() {
@@ -20,7 +19,7 @@ public class Flower extends Garden {
         } else System.out.println("The " + color + " Flower doesn't needs water");
     }
 
-    public void wateringFlower() {
+    public void watering() {
         currentWaterAmount = waterDivided() * waterLoss;
     }
 

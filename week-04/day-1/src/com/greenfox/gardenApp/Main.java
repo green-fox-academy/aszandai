@@ -25,8 +25,8 @@ public class Main {
 
         System.out.println();
 
-        flower1.wateringFlower();
-        tree1.wateringTree();
+        flower1.watering();
+        tree1.watering();
 
         garden.watering1();
         flower1.needsWater();
