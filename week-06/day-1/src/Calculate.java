@@ -1,8 +1,5 @@
 import java.util.Arrays;
 import java.util.List;
-import java.util.OptionalDouble;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Calculate {
     public static void main(String[] args) {
@@ -28,13 +25,14 @@ public class Calculate {
                 .forEach(System.out::println);
 
         // get the average value of the odd numbers from the numbers list
-        OptionalDouble average = numbers.stream()
+        numbers.stream()
                 .filter(x -> x % 2 == 1)
                 .mapToDouble(Integer::doubleValue)
-                .average();
-        System.out.println(average);
+                .average()
+                .ifPresent(System.out::println);
 
-        // get the sum of the odd numbers in the following list
+        // get the sum of the odd numbers in the following list:
+
         List<Integer> numbers3 = Arrays.asList(5, 9, 1, 2, 3, 7, 5, 6, 7, 3, 7, 6, 8, 5, 4, 9, 6, 2);
         int sum = numbers3.stream()
                 .filter(x -> x % 2 == 1)
