@@ -33,6 +33,5 @@ public class Strings {
                 .collect(Collectors.groupingBy(Character::charValue, Collectors.counting()));
         System.out.println(frequency);
 
-        
     }
 }

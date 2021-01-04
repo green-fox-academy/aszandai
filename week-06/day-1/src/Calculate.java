@@ -21,7 +21,7 @@ public class Calculate {
         List<Integer> numbers2 = Arrays.asList(3, 9, 2, 8, 6, 5);
         numbers2.stream()
                 .map(x -> x * x)
-                .filter(x -> x >20)
+                .filter(x -> x > 20)
                 .forEach(System.out::println);
 
         // get the average value of the odd numbers from the numbers list
@@ -39,7 +39,6 @@ public class Calculate {
                 .mapToInt(x -> x)
                 .sum();
         System.out.println("Sum values: " + sum);
+
     }
-
-
 }
