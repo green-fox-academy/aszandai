@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Greetings, friend!</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<p th:style="'font-size: ' + ${randomSize} + 'px ; color: ' + ${randomColor}"
+   th:text="${greetings} + ', ' + ${name} + '!'"></p>
+</body>
+</html>
