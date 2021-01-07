@@ -6,12 +6,20 @@
 </head>
 <body>
 <h2>Animals account list</h2>
-<table>
+<table border="1" bgcolor="ghostwhite">
+    <tr style="font-weight: bold">
+        <td>Id</td>
+        <td>Name</td>
+        <td>Balance</td>
+        <td>Animal type</td>
+        <td>Reputation</td>
+    </tr>
     <tr th:each="list: ${accounts}" th:style="${list.king} ? 'color:magenta' : 'color:black'">
         <td th:text="${list.id}"></td>
         <td th:text="${list.name}"></td>
         <td th:text="${list.balance} + '.00 ' + ${list.currency}"></td>
         <td th:text="${list.animalType}"></td>
+        <td th:text="${list.isGoodGuy} ? 'Good guy' : 'Bad guy'"></td>
     </tr>
 </table>
 </body>
