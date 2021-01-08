@@ -2,17 +2,16 @@ body {
     background-color: #fff;
 }
 
-headerTitle {
+table a {
     color: deepskyblue;
     font-family: "Arial";
 }
 
-headerTitle:after {
+table.headerLinks:before {
     content: ' ';
     display: block;
     border: 2px solid deepskyblue;
 }
-
 
 table {
     border-collapse: collapse;
@@ -40,7 +39,7 @@ table tr:nth-child(odd) td {
 }
 
 table, td {
-    border: 1px solid silver;
+    border: 2px solid white;
 }
 
 table thead tr th {
@@ -53,7 +52,7 @@ nav {
 
 button {
     padding: 6px 12px 3px 12px;
-    width: 5%;
+    width: 100px;
     font-family: Helvetica, Arial, sans-serif;
     border: 3px solid tomato;
     border-radius: 5px;
