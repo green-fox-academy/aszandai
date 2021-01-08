@@ -39,19 +39,5 @@
 <span th:if="${averageStock}" th:text="'Average stock: ' + ${averageStock}"></span>
 <span th:if="${mostExpensive}" th:text="'Most expensive thing: ' + ${mostExpensive}"></span>
 
-<table border="1" bgcolor="ghostwhite">
-    <tr class="itemTypes">
-        <td>Name</td>
-        <td>Description</td>
-        <td>Price</td>
-        <td>Quantity of stock</td>
-    </tr>
-    <tr th:each="itemslist: ${itemsList}">
-        <td th:text="${itemslist.name}"></td>
-        <td th:text="${itemslist.description}"></td>
-        <td th:text="${itemslist.price} + ' HUF'"></td>
-        <td th:text="${itemslist.quantityOfStock}"></td>
-    </tr>
-</table>
 </body>
 </html>

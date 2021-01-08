@@ -5,9 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -69,7 +67,7 @@ public class WebShopController {
     }
 
     @GetMapping("/cheapest-first")
-    public String cheapestFirst(Model model){
+    public String cheapestFirst(Model model) {
         model.addAttribute("itemsList", getCheapestFirst());
         return "index";
     }
@@ -81,7 +79,7 @@ public class WebShopController {
     }
 
     @GetMapping("/contains-nike")
-    public String containsNike(Model model){
+    public String containsNike(Model model) {
         model.addAttribute("itemsList", getContainsNike());
         return "index";
     }
@@ -93,8 +91,24 @@ public class WebShopController {
     }
 
     @GetMapping("/average-stock")
-    public String averageStock(Model model){
-        model.addAttribute("averageStock", getAverageStock());
-        return "index";
+    public String averageStock(Model model) {
+        if (!shopItemsList.isEmpty()) {
+            model.addAttribute("averageStock", getAverageStock());
+        }
+        return "indexSimple";
+    }
+
+    private Optional<ShopItems> getMostExpensive() {
+        return shopItemsList.stream().min((i1, i2) -> i2.getPrice().compareTo(i1.getPrice()));
+    }
+
+    @GetMapping("/most-expensive")
+    public String mostExpensive(Model model) {
+        Optional<ShopItems> optionalShopItems = getMostExpensive();
+        if (optionalShopItems.isPresent()) {
+            ShopItems shopItems = optionalShopItems.get();
+            model.addAttribute("mostExpensive", shopItems.getName());
+        }
+        return "indexSimple";
     }
 }
