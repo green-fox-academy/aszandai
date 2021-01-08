@@ -1,0 +1,63 @@
+body {
+    background-color: #fff;
+}
+
+headerTitle {
+    color: deepskyblue;
+    font-family: "Arial";
+}
+
+headerTitle:after {
+    content: ' ';
+    display: block;
+    border: 2px solid deepskyblue;
+}
+
+
+table {
+    border-collapse: collapse;
+    border-spacing: 10cm;
+    border-color: white;
+    text-align: left;
+    width: 100%;
+    font-family: "Arial";
+}
+
+table td {
+    padding: 15px 30px;
+    background: whitesmoke;
+}
+
+table th {
+    background: deepskyblue;
+    padding: 15px;
+    color: black;
+    text-align: center;
+}
+
+table tr:nth-child(odd) td {
+    background: white;
+}
+
+table, td {
+    border: 1px solid silver;
+}
+
+table thead tr th {
+    border-bottom: 5px solid slategrey;
+}
+
+nav {
+    padding-left: 15px;
+}
+
+button {
+    padding: 6px 12px 3px 12px;
+    width: 5%;
+    font-family: Helvetica, Arial, sans-serif;
+    border: 3px solid tomato;
+    border-radius: 5px;
+    margin: 3px 6px;
+    background-color: orangered;
+    color: white;
+}

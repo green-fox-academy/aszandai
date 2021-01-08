@@ -4,6 +4,9 @@ import com.project.webshop.model.ShopItems;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -110,5 +113,17 @@ public class WebShopController {
             model.addAttribute("mostExpensive", shopItems.getName());
         }
         return "indexSimple";
+    }
+    private List<ShopItems> getSearchInfo(String search) {
+        return shopItemsList
+                .stream()
+                .filter(s -> s.getName().contains(search) || s.getDescription().contains(search))
+                .collect(Collectors.toList());
+    }
+
+    @PostMapping("/search")
+    public String search(@RequestParam String search, Model model) {
+        model.addAttribute("itemsList", getSearchInfo(search));
+        return "index";
     }
 }

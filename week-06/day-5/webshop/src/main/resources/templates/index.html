@@ -3,6 +3,7 @@
 <head>
     <title>WebShop</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 <table border="1">
@@ -35,16 +36,24 @@
         </td>
     </tr>
 </table>
-<br>
+
 <span th:if="${averageStock}" th:text="'Average stock: ' + ${averageStock}"></span>
+
 <span th:if="${mostExpensive}" th:text="'Most expensive thing: ' + ${mostExpensive}"></span>
+
+<form action="/search" method="post">
+    <label for="search"> Search for: </label>
+    <br>
+    <input type="text" placeholder="...something like Nike" id="search" name="search">
+    <button onclick="location.href='/search'" type="submit"> Search</button>
+</form>
 
 <table border="1" bgcolor="ghostwhite">
     <tr class="itemTypes">
-        <td>Name</td>
-        <td>Description</td>
-        <td>Price</td>
-        <td>Quantity of stock</td>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity of stock</th>
     </tr>
     <tr th:each="itemslist: ${itemsList}">
         <td th:text="${itemslist.name}"></td>

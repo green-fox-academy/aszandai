@@ -3,15 +3,16 @@
 <head>
     <title>WebShop</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
 <table border="1">
-    <tr class="headerTitle">
+    <tr class="header">
         <td colspan="5">
             <a href="/webshop">My Shop</a>
         </td>
     </tr>
-    <tr class="headerLinks">
+    <tr class="button">
         <td>
             <form action="/only-available">
                 <!--        <a href="/only-available" class="button">Only available</a>-->
@@ -35,9 +36,16 @@
         </td>
     </tr>
 </table>
-<br>
-<span th:if="${averageStock}" th:text="'Average stock: ' + ${averageStock}"></span>
-<span th:if="${mostExpensive}" th:text="'Most expensive thing: ' + ${mostExpensive}"></span>
 
+<form action="/search" method="post">
+    <label for="search"> Search for: </label>
+    <br>
+    <input type="text" placeholder="...something like Nike" id="search" name="search">
+    <button onclick="location.href='/search'" type="submit"> Search</button>
+</form>
+
+<h2 th:if="${averageStock}" th:text="'Average stock: ' + ${averageStock}"></h2>
+
+<h2 th:if="${mostExpensive}" th:text="'Most expensive thing: ' + ${mostExpensive}"></h2>
 </body>
 </html>
