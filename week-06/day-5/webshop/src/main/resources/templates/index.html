@@ -10,14 +10,32 @@
         <td colspan="5">My Shop</td>
     </tr>
     <tr class="headerLinks">
-        <td><button onclick="location.href='/only-available'">Only available</button></td>
-        <td><a th:href="@{cheapest-first}">Cheapest first</a></td>
-        <td><a th:href="@{contains-nike}">Only Nike</a></td>
-        <td><a th:href="@{average-stock}">Average stock</a></td>
-        <td><a th:href="@{most-expensive}">Most expensive available</a></td>
+        <td>
+            <form action="/only-available">
+                <!--        <a href="/only-available" class="button">Only available</a>-->
+                <input type="submit" value="Only available"/></form>
+        </td>
+        <td>
+            <form action="/cheapest-first">
+                <input type="submit" value="Cheapest first"/></form>
+        </td>
+        <td>
+            <form action="/contains-nike">
+                <input type="submit" value="Only Nike"/></form>
+        </td>
+        <td>
+            <form action="/average-stock">
+                <input type="submit" value="Average stock"/></form>
+        </td>
+        <td>
+            <form action="/most-expensive">
+                <input type="submit" value="Most expensive available"/></form>
+        </td>
     </tr>
 </table>
 <br>
+
+<span th:text="@{average-stock} ? 'Average stock ' + ${averageStock}"></span>
 
 <table border="1" bgcolor="ghostwhite">
     <tr class="itemTypes">
