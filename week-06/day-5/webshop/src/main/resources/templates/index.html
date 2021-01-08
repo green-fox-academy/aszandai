@@ -7,7 +7,9 @@
 <body>
 <table border="1">
     <tr class="headerTitle">
-        <td colspan="5">My Shop</td>
+        <td colspan="5">
+            <a href="/webshop">My Shop</a>
+        </td>
     </tr>
     <tr class="headerLinks">
         <td>
@@ -34,8 +36,7 @@
     </tr>
 </table>
 <br>
-
-<span th:text="@{average-stock} ? 'Average stock ' + ${averageStock}"></span>
+<span th:if="${averageStock}" th:text="'Average stock: ' + ${averageStock}"></span>
 
 <table border="1" bgcolor="ghostwhite">
     <tr class="itemTypes">
