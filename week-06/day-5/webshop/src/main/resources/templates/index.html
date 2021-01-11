@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-<header> My Shop</header>
+<header><a href="/webshop">My Shop</a></header>
 <table class="categories">
     <tr>
         <td>
@@ -20,7 +20,7 @@
         </td>
         <td>
             <form action="/contains-nike">
-                <input type="submit" value="Only Nike"/></form>
+                <input type="submit" value="Contains Nike"/></form>
         </td>
         <td>
             <form action="/average-stock">
@@ -32,10 +32,6 @@
         </td>
     </tr>
 </table>
-
-<span th:if="${averageStock}" th:text="'Average stock: ' + ${averageStock}"></span>
-
-<span th:if="${mostExpensive}" th:text="'Most expensive thing: ' + ${mostExpensive}"></span>
 
 <form action="/search" method="post" class="searchBar">
     <label for="search"> Search for: </label>

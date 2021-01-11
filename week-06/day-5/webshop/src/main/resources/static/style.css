@@ -12,6 +12,10 @@ header {
     border-bottom: thin solid deepskyblue;
 }
 
+a:visited {
+    color: deepskyblue;
+}
+
 .categories {
     margin: auto;
     padding-top: 15px;
@@ -33,7 +37,7 @@ header {
 }
 
 .itemlist th {
-    background: #41d1ff;
+    background: #71d9ff;
     padding: 15px;
     color: black;
     text-align: center;
