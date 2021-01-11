@@ -39,7 +39,7 @@ public class WebShopController {
                 12));
         shopItemsList.add(new ShopItems(
                 "Flux Capacitor",
-                "Eats Uranium and can help in time travel",
+                "Eats Plutonium, works best at 1.21 gigawatts.",
                 2500000.0,
                 0));
     }

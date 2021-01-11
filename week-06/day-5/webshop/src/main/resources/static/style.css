@@ -1,60 +1,78 @@
 body {
     background-color: #fff;
-}
-
-table a {
-    color: deepskyblue;
     font-family: "Arial";
+    margin-left: 300px;
+    margin-right: 300px;
 }
 
-table.headerLinks:before {
-    content: ' ';
-    display: block;
-    border: 2px solid deepskyblue;
+header {
+    color: deepskyblue;
+    font-size: xx-large;
+    border-bottom: thin solid deepskyblue;
 }
 
-table {
+.categories {
+    margin: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+}
+
+.itemlist {
     border-collapse: collapse;
     border-spacing: 10cm;
     border-color: white;
     text-align: left;
     width: 100%;
-    font-family: "Arial";
 }
 
-table td {
+.itemlist td {
     padding: 15px 30px;
     background: whitesmoke;
 }
 
-table th {
-    background: deepskyblue;
+.itemlist th {
+    background: #41d1ff;
     padding: 15px;
     color: black;
     text-align: center;
 }
 
-table tr:nth-child(odd) td {
+.itemlist tr:nth-child(odd) td {
     background: white;
 }
 
-table, td {
+.itemlist tr td:nth-child(3) {
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+.itemlist tr td:nth-child(4) {
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+td, th {
     border: 2px solid white;
 }
 
-table thead tr th {
-    border-bottom: 5px solid slategrey;
-}
-
-nav {
-    padding-left: 15px;
+input {
+    padding: 6px 12px 3px 12px;
+    width: auto;
+    border: 3px solid orangered;
+    border-radius: 5px;
+    margin: 3px 6px;
+    background-color: orangered;
+    color: white;
+    text-transform: uppercase;
 }
 
 button {
     padding: 6px 12px 3px 12px;
     width: 100px;
-    font-family: Helvetica, Arial, sans-serif;
-    border: 3px solid tomato;
+    border: 3px solid orangered;
     border-radius: 5px;
     margin: 3px 6px;
     background-color: orangered;
