@@ -1,0 +1,27 @@
+SQL
+
+Exercise 1
+select title from Movie where director = 'Steven Spielberg';
+
+Exercise 2
+select distinct year from movie inner join rating on movie.mID = rating.mid where stars >= 4 order by year asc;
+
+Exercise 3
+select title from movie left join rating on movie.mid = rating.mid where stars is null;
+
+Exercise 4
+select name from reviewer right join rating on reviewer.rid = rating.rid where ratingdate is null;
+
+Exercise 5
+select name, title, stars, ratingdate from movie inner join rating on movie.mid = rating.mid inner join reviewer on rating.rid = reviewer.rid order by name, title, stars asc;
+
+Exercise 6
+select name, title from reviewer inner join rating on reviewer.rid = rating.rid inner join movie on movie.mid = rating.mid where movie.mid group by name,title having count(name) > 1 AND count(title) > 1 limit 1;
+
+Exercise 7
+select title, MAX(stars) as max from movie inner join rating on movie.mid = rating.mid group by title order by title;
+
+Exercise 8
+select title, (MAX(stars) - MIN(stars)) as rating_spread from movie inner join rating on movie.mid = rating.mid group by title order by rating_spread desc, title asc;
+
+
