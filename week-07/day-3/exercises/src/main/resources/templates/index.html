@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Utility Exercise</title>
+    <meta charset="UTF-8">
+</head>
+<body action="/useful/colored" ? th:bgcolor="${randomColor}">
+
+<form action="/useful">
+    <input type="submit" value="Home"/>
+</form>
+
+<form action="/useful/colored">
+    <input type="submit" value="Colored"/>
+</form>
+<form method="get" action="/useful/email">
+    <input type="text" id="email" name="email"/>
+    <button type="submit">Validate</button>
+    <br>
+    <p th:style="'color: ' + ${color}" th:text="${message}"></p>
+</form>
+
+</body>
+</html>

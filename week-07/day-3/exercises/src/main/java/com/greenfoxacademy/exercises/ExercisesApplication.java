@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class ExercisesApplication implements CommandLineRunner {
-
     private Printer printer;
     private MyColor myColor;
 
@@ -18,6 +17,7 @@ public class ExercisesApplication implements CommandLineRunner {
         this.printer = printer;
         this.myColor = myColor;
     }
+
     public static void main(String[] args) {
         SpringApplication.run(ExercisesApplication.class, args);
     }
@@ -26,6 +26,5 @@ public class ExercisesApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         printer.log("hello");
         myColor.printColor(printer);
-
     }
 }
