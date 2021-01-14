@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Programmer Fox Club</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<ul th:list-style-type="disc">
+    <li><a href="/information">Information</a></li>
+</ul>
+
+<img src="/mages/greenfox.png" alt="fox"/>
+
+<form method="get" action="/login">
+    <p th:text="'This is ' + ${name} + '. Currently living on pizza and lemonade. He knows 2 tricks.'"></p>
+</form>
+<h1>Known tricks</h1>
+<ul th:list-style-type="disc">
+    <li>write HTML</li>
+    <li>code in Java</li>
+</ul>
+</body>
+</html>
