@@ -5,24 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 public class Fox {
     private String name;
-    private List<String> trickList = new ArrayList<>();
-    private List<String> foodList = new ArrayList<>();
-    private List<String> drinkList = new ArrayList<>();
-
-    public Fox() {
-    }
-
-    public Fox(String name, List<String> trickList, List<String> foodList, List<String> drinkList) {
-        this.name = name;
-        this.trickList = trickList;
-        this.foodList = foodList;
-        this.drinkList = drinkList;
-    }
+    private String foxFoods;
+    private String foxDrinks;
+    private String foxTricks;
 
     public String getName() {
         return name;
@@ -32,27 +23,27 @@ public class Fox {
         this.name = name;
     }
 
-    public List<String> getTrickList() {
-        return trickList;
+    public String getFoxFoods() {
+        return foxFoods;
     }
 
-    public void setTrickList(List<String> trickList) {
-        this.trickList = trickList;
+    public void setFoxFoods(String foxFoods) {
+        this.foxFoods = foxFoods;
     }
 
-    public List<String> getFoodList() {
-        return foodList;
+    public String getFoxDrinks() {
+        return foxDrinks;
     }
 
-    public void setFoodList(List<String> foodList) {
-        this.foodList = foodList;
+    public void setFoxDrinks(String foxDrinks) {
+        this.foxDrinks = foxDrinks;
     }
 
-    public List<String> getDrinkList() {
-        return drinkList;
+    public String getFoxTricks() {
+        return foxTricks;
     }
 
-    public void setDrinkList(List<String> drinkList) {
-        this.drinkList = drinkList;
+    public void setFoxTricks(String foxTricks) {
+        this.foxTricks = foxTricks;
     }
 }

@@ -7,14 +7,16 @@
 <body>
 
 <ul th:list-style-type="disc">
-    <li><a href="/information">Information</a></li>
+    <li><a href="/login">Login</a></li>
+    <li><a th:href="'/'">Information</a></li>
 </ul>
 
-<img src="/mages/greenfox.png" alt="fox"/>
+<img src="greenfox.png" alt="fox"/>
 
 <form method="get" action="/login">
-    <p th:text="'This is ' + ${name} + '. Currently living on pizza and lemonade. He knows 2 tricks.'"></p>
+    <p th:text="'This is ' + ${name} + '. Currently living on ' + ${food} +  ' and ' + ${drink} +  '. He knows 0 tricks.'"></p>
 </form>
+
 <h1>Known tricks</h1>
 <ul th:list-style-type="disc">
     <li>write HTML</li>

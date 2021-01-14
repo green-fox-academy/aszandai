@@ -13,4 +13,12 @@ public class LoginService {
     public void addFox(Fox fox) {
         foxList.add(fox);
     }
+
+    public String nameTheFox(Fox fox) {
+        return fox.getName();
+    }
+
+    public List<Fox> getFoxList() {
+        return foxList;
+    }
 }

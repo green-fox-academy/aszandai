@@ -7,10 +7,20 @@
 <body>
 <h1>Welcome to Programmer Fox Club!</h1>
 
-<p>Please provide a name for your fox:</p>
+<p>Please give a name for your fox:</p>
 <form action="/login" method="post">
     <label for="name">Name</label>
     <input type="text" id="name" name="name" placeholder="Mr. Fox">
+    <br>
+    <label for="foods">Select it's first meal</label>
+    <select name="type" id="foods">
+        <option th:text="${foods}" th:value="${foods}" th:each="foods: ${foodsList}">
+    </select>
+    <br>
+    <label for="drinks">Select it's first drink</label>
+    <select name="type" id="drinks">
+        <option th:text="${drinks}" th:value="${drinks}" th:each="drinks: ${drinksList}">
+    </select>
     <button type="submit"> GO</button>
 </form>
 </body>
