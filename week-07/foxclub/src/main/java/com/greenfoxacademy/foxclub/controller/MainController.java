@@ -1,9 +1,8 @@
 package com.greenfoxacademy.foxclub.controller;
 
+import com.greenfoxacademy.foxclub.model.Drink;
+import com.greenfoxacademy.foxclub.model.Food;
 import com.greenfoxacademy.foxclub.model.Fox;
-import com.greenfoxacademy.foxclub.model.FoxDrink;
-import com.greenfoxacademy.foxclub.model.FoxFood;
-import com.greenfoxacademy.foxclub.model.FoxTrick;
 import com.greenfoxacademy.foxclub.services.InformationService;
 import com.greenfoxacademy.foxclub.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MainController {
-
     LoginService loginService;
     InformationService informationService;
+    Fox fox;
 
     @Autowired
     public MainController(LoginService loginService, InformationService informationService) {
@@ -29,24 +28,46 @@ public class MainController {
 
     @GetMapping("/")
     public String homePage(@RequestParam(defaultValue = "Mr. Fox") String name, @ModelAttribute Fox fox, Model model) {
-        model.addAttribute("name", name);
-        return "index";
+        if (name.equals("Mr. Fox")) {
+            model.addAttribute("foodsList", informationService.getFoodList());
+            model.addAttribute("drinksList", informationService.getDrinkList());
+            return "login";
+        } else {
+            fox = new Fox(name);
+            model.addAttribute("fox", fox);
+            model.addAttribute("tricksum", fox.getTrickSum());
+            return "index";
+        }
     }
 
     @GetMapping("/login")
-    public String getLoginPage(Model model, FoxFood food, FoxDrink drink, FoxTrick trick) {
-        model.addAttribute("foodsList", informationService.getFoodsList(food));
-        model.addAttribute("drinksList", informationService.getDrinksList(drink));
+    public String getLoginPage(Model model) {
+        model.addAttribute("foodsList", informationService.getFoodList());
+        model.addAttribute("drinksList", informationService.getDrinkList());
 
-        model.addAttribute("counter");
         return "login";
     }
 
     @PostMapping("/login")
-    public String addCharacter(@ModelAttribute Fox fox, Model model, FoxFood food, FoxDrink drink) {
+    public String postCharacter(@ModelAttribute Fox fox) {
         loginService.nameTheFox(fox);
-        loginService.addFox(fox);
+        return "redirect:/?name=" + fox.getName();
+    }
 
+    @GetMapping("/nutrition-store")
+    public String addFoodAndStuff(Model model) {
+        model.addAttribute("foodsList", informationService.getFoodList());
+        model.addAttribute("drinksList", informationService.getDrinkList());
+
+        return "nutritionStore";
+    }
+
+    @PostMapping("/nutrition-store")
+    public String submitFoodAndStuff(Food food, Drink drink, Model model) {
+        fox.setDrink(drink);
+        fox.setFood(food);
+        model.addAttribute("fox", fox);
+        model.addAttribute("tricksum", fox.getTrickSum());
         return "redirect:/?name=" + fox.getName();
     }
 }

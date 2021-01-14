@@ -12,14 +12,16 @@
     <label for="name">Name</label>
     <input type="text" id="name" name="name" placeholder="Mr. Fox">
     <br>
-    <label for="foods">Select it's first meal</label>
-    <select name="type" id="foods">
-        <option th:text="${foods}" th:value="${foods}" th:each="foods: ${foodsList}">
+
+    <label for="food">Select it's first meal</label>
+    <select name="food">
+        <option id="food" th:each="foods: ${foodsList}" th:text="${foods}" th:value="${foods}">
     </select>
     <br>
-    <label for="drinks">Select it's first drink</label>
-    <select name="type" id="drinks">
-        <option th:text="${drinks}" th:value="${drinks}" th:each="drinks: ${drinksList}">
+
+    <label for="drink">Select it's first drink</label>
+    <select name="drink" id="drinks">
+        <option id="drink" th:each="drinks: ${drinksList}" th:text="${drinks}" th:value="${drinks}">
     </select>
     <button type="submit"> GO</button>
 </form>

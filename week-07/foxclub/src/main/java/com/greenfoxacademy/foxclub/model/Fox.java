@@ -1,19 +1,26 @@
 package com.greenfoxacademy.foxclub.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 public class Fox {
     private String name;
-    private String foxFoods;
-    private String foxDrinks;
-    private String foxTricks;
+    private Food food;
+    private Drink drink;
+    List<Trick> tricks = new ArrayList<>();
+
+    public Fox(String name) {
+        this.name = name;
+        food = Food.Kebab;
+        drink = Drink.Getorade;
+        tricks.add(Trick.Exist);
+        tricks.add(Trick.PowerNap);
+    }
 
     public String getName() {
         return name;
@@ -23,27 +30,31 @@ public class Fox {
         this.name = name;
     }
 
-    public String getFoxFoods() {
-        return foxFoods;
+    public Food getFood() {
+        return food;
     }
 
-    public void setFoxFoods(String foxFoods) {
-        this.foxFoods = foxFoods;
+    public void setFood(Food food) {
+        this.food = food;
     }
 
-    public String getFoxDrinks() {
-        return foxDrinks;
+    public Drink getDrink() {
+        return drink;
     }
 
-    public void setFoxDrinks(String foxDrinks) {
-        this.foxDrinks = foxDrinks;
+    public void setDrink(Drink drink) {
+        this.drink = drink;
     }
 
-    public String getFoxTricks() {
-        return foxTricks;
+    public List<Trick> getTricks() {
+        return tricks;
     }
 
-    public void setFoxTricks(String foxTricks) {
-        this.foxTricks = foxTricks;
+    public void setTricks(List<Trick> tricks) {
+        this.tricks = tricks;
+    }
+
+    public Integer getTrickSum() {
+        return tricks.size();
     }
 }
