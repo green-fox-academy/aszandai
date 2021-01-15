@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Collection;
+
 
 @Controller
 public class MainController {
@@ -27,8 +29,8 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String homePage(@RequestParam(defaultValue = "Mr. Fox") String name, @ModelAttribute Fox fox, Model model) {
-        if (name.equals("Mr. Fox")) {
+    public String homePage(@RequestParam(defaultValue = "Mr. Cutie Pie") String name, @ModelAttribute Fox fox, Model model) {
+        if (name.equals("null")) {
             model.addAttribute("foodsList", informationService.getFoodList());
             model.addAttribute("drinksList", informationService.getDrinkList());
             return "login";
@@ -50,24 +52,8 @@ public class MainController {
 
     @PostMapping("/login")
     public String postCharacter(@ModelAttribute Fox fox) {
+        loginService.addFox(fox);
         loginService.nameTheFox(fox);
-        return "redirect:/?name=" + fox.getName();
-    }
-
-    @GetMapping("/nutrition-store")
-    public String addFoodAndStuff(Model model) {
-        model.addAttribute("foodsList", informationService.getFoodList());
-        model.addAttribute("drinksList", informationService.getDrinkList());
-
-        return "nutritionStore";
-    }
-
-    @PostMapping("/nutrition-store")
-    public String submitFoodAndStuff(Food food, Drink drink, Model model) {
-        fox.setDrink(drink);
-        fox.setFood(food);
-        model.addAttribute("fox", fox);
-        model.addAttribute("tricksum", fox.getTrickSum());
         return "redirect:/?name=" + fox.getName();
     }
 }

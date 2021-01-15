@@ -42,9 +42,13 @@ public class UtilityService {
     public Boolean validateEmail(String email) {
         boolean contains = false;
         for (int i = 0; i < email.length(); i++) {
-            if (email.contains("@") && email.contains(".")) {
+            if (email.charAt(i) == '@') {
                 contains = true;
-                return contains;
+            }
+            if (contains) {
+                if (email.charAt(i) == '.') {
+                    return true;
+                }
             }
         }
         return false;

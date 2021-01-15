@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Programmer Fox Club</title>
+    <title>Trash Panda Club</title>
     <meta charset="UTF-8">
 </head>
 <body>
@@ -9,12 +9,12 @@
 <ul th:list-style-type="disc">
     <li><a th:href="'/'">Information</a></li>
     <li><a href="/login">Login</a></li>
-    <li><a href="/nutritionStore">Nutrition Store</a></li>
+    <li><a href="/nutrition-store">Nutrition Store</a></li>
 </ul>
 
-<img src="greenfox.png" alt="fox"/>
+<img src="raccoon_garbage.jpg" alt="trash-panda" width="15%" height="15%"/>
 
-<form method="get" action="/login">
+<form method="get">
     <p th:text="'This is ' + ${fox.name} + ', currently living on ' + ${fox.food} +  ' and ' + ${fox.drink} +  '. He knows ' + ${tricksum} + ' tricks.'"></p>
 </form>
 

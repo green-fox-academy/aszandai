@@ -3,6 +3,7 @@ package com.greenfoxacademy.foxclub.model;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +15,11 @@ public class Fox {
     private Drink drink;
     List<Trick> tricks = new ArrayList<>();
 
+
     public Fox(String name) {
         this.name = name;
-        food = Food.Kebab;
-        drink = Drink.Getorade;
+        food = Food.valueOf("WetGarbage");
+        drink = Drink.valueOf("Getorade");
         tricks.add(Trick.Exist);
         tricks.add(Trick.PowerNap);
     }

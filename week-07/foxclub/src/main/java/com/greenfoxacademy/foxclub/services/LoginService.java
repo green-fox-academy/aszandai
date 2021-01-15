@@ -9,9 +9,10 @@ import java.util.List;
 @Service
 public class LoginService {
     private List<Fox> foxList = new ArrayList<>();
+    private Fox currentName;
 
-    public void addFox(Fox fox) {
-        foxList.add(fox);
+    public void addFox(Fox currentFox) {
+        foxList.add(currentFox);
     }
 
     public String nameTheFox(Fox fox) {
@@ -20,5 +21,13 @@ public class LoginService {
 
     public List<Fox> getFoxList() {
         return foxList;
+    }
+
+    public Fox getCurrentName() {
+        return currentName;
+    }
+
+    public void setCurrentName(Fox currentName) {
+        this.currentName = currentName;
     }
 }
