@@ -3,15 +3,21 @@
 <head>
     <title>Login page</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h1>Welcome to Trash Panda Club!</h1>
 
 <p>Please give a name for your cutie:</p>
 <form action="/login" method="post">
-    <label for="name">Name</label>
-    <input type="text" id="name" name="name" placeholder="Mr. Fox">
-    <br>
+    <div class="imgcontainer">
+        <img src="raccoon_happy.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Bob">
+    </div>
 
     <label for="food">Select it's first meal</label>
     <select name="food">
@@ -23,6 +29,7 @@
     <select name="drink" id="drinks">
         <option id="drink" th:each="drinks: ${drinksList}" th:text="${drinks}" th:value="${drinks}">
     </select>
+    <br>
     <button type="submit"> GO</button>
 </form>
 </body>
