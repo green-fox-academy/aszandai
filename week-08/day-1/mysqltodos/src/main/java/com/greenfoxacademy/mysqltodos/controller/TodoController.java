@@ -5,10 +5,7 @@ import com.greenfoxacademy.mysqltodos.repository.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,10 +18,22 @@ public class TodoController {
     public TodoController(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
-    
+
+    @ResponseBody
+    @GetMapping("/")
+    public String home() {
+        return "Homepage";
+    }
+
     @GetMapping("/todo")
-    public String list(Model model) {
+    public String list(Model model, Todo todo) {
         model.addAttribute("todos", todoRepository.findAll());
+        return "todolist";
+    }
+
+    @GetMapping ("/active-todos")
+    public String activeTodos (Model model){
+        model.addAttribute("todos", todoRepository.findAllByIsDone(false));
         return "todolist";
     }
 
