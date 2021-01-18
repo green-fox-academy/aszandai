@@ -24,7 +24,7 @@ public class TodoController {
 
     @GetMapping ("/active-todos")
     public String activeTodos (Model model){
-//        model.addAttribute("todos", todoRepository.findAllByIsDone(false));
+        model.addAttribute("todos", todoRepository.findAllByIsDone(false));
         return "todolist";
     }
 

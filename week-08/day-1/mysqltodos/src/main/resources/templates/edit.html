@@ -11,19 +11,19 @@
 
 <h3>Edit todo:</h3>
 
-<form th:action="@{/${id}/edit}" method="post">
+<form th:action="'/' + ${id} + '/edit'" method="post">
     <label for="title"> Todo description:</label>
-    <input type="text" id="title" name="title">
+    <input type="text" id="title" name="title" th:value="${title}">
 
     <br>
 
     <label for="urgent">Urgent: </label>
-    <input type="checkbox" id="urgent" name="urgent">
+    <input type="checkbox" id="urgent" name="urgent" th:checked="${isUrgent}">
 
     <br>
 
-    <label for="done" id="done" name="done">Done: </label>
-    <input type="checkbox">
+    <label for="done">Done: </label>
+    <input type="checkbox" id="done" name="done" th:checked="${isDone}">
 
     <br>
 
