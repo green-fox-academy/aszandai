@@ -7,9 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 @Controller
 public class TodoController {
     private TodoRepository todoRepository;
@@ -17,12 +14,6 @@ public class TodoController {
     @Autowired
     public TodoController(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
-    }
-
-    @ResponseBody
-    @GetMapping("/")
-    public String home() {
-        return "Homepage";
     }
 
     @GetMapping("/todo")
@@ -33,14 +24,34 @@ public class TodoController {
 
     @GetMapping ("/active-todos")
     public String activeTodos (Model model){
-        model.addAttribute("todos", todoRepository.findAllByIsDone(false));
+//        model.addAttribute("todos", todoRepository.findAllByIsDone(false));
         return "todolist";
     }
 
-    @PostMapping("/list")
-    public String addToList(@ModelAttribute Todo todo) {
+    @GetMapping("/todo/add")
+    public String addTodoPage() {
+        return "addtodos";
+    }
+
+    @PostMapping("/todo/add")
+    public String addTodo(@ModelAttribute Todo todo) {
         todoRepository.save(todo);
         return "redirect:/todo";
     }
 
+    @GetMapping("/{id}/delete")
+    public String deleteTodo(@PathVariable Long id) {
+        todoRepository.deleteById(id);
+        return "redirect:/todo";
+    }
+
+    @GetMapping("/{id}/edit")
+    public String editTodo(@PathVariable Long id) {
+        return "edit";
+    }
+    @PostMapping("/{id}/edit")
+    public String editTodoSubmit(@PathVariable Long id, @ModelAttribute Todo todo) {
+        todoRepository.save(todo);
+        return "redirect:/todo";
+    }
 }
