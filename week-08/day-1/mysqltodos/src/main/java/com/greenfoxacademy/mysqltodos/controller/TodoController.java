@@ -22,7 +22,7 @@ public class TodoController {
     }
 
     @GetMapping("/todo")
-    public String list(Model model, Todo todo) {
+    public String list(Model model) {
         model.addAttribute("todos", todoRepository.findAll());
         return "todolist";
     }
@@ -35,7 +35,7 @@ public class TodoController {
 
     @GetMapping("/todo/add")
     public String addTodoPage() {
-        return "addtodos";
+        return "add-todos";
     }
 
     @PostMapping("/todo/add")
@@ -44,18 +44,18 @@ public class TodoController {
         return "redirect:/todo";
     }
 
-    @GetMapping("/{id}/delete")
+    @GetMapping("todo/{id}/delete")
     public String deleteTodo(@PathVariable Long id) {
         todoRepository.deleteById(id);
         return "redirect:/todo";
     }
 
-    @GetMapping("/{id}/edit")
+    @GetMapping("todo/{id}/edit")
     public String editTodo(@PathVariable Long id) {
-        return "edit";
+        return "edit-todos";
     }
 
-    @PostMapping("/{id}/edit")
+    @PostMapping("todo/{id}/edit")
     public String editTodoSubmit(@PathVariable Long id, @ModelAttribute Todo todo) {
         todoRepository.save(todo);
         return "redirect:/todo";
@@ -64,6 +64,6 @@ public class TodoController {
     @PostMapping("/search")
     public String searchBar(Model model, String search) {
         model.addAttribute("todos", todoRepository.findByTitleContaining(search));
-        return "todolist";
+        return "redirect:/todo";
     }
 }

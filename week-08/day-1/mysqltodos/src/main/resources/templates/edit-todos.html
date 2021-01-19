@@ -11,7 +11,7 @@
 
 <h3>Edit todo:</h3>
 
-<form th:action="'/' + ${id} + '/edit'" method="post">
+<form th:action="'/todo/' + ${id} + '/edit'" method="post">
     <label for="title"> Todo description:</label>
     <input type="text" id="title" name="title">
 

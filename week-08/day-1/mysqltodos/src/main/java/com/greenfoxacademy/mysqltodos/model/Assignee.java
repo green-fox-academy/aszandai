@@ -7,19 +7,17 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "todo")
-public class Todo {
+@Table(name = "assignees")
+public class Assignee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String title;
-    private boolean isUrgent;
-    private boolean isDone;
+    private String name;
+    private String email;
 }
