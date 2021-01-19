@@ -13,17 +13,17 @@
 
 <form th:action="'/' + ${id} + '/edit'" method="post">
     <label for="title"> Todo description:</label>
-    <input type="text" id="title" name="title" th:value="${title}">
+    <input type="text" id="title" name="title">
 
     <br>
 
     <label for="urgent">Urgent: </label>
-    <input type="checkbox" id="urgent" name="urgent" th:checked="${isUrgent}">
+    <input type="checkbox" id="urgent" name="urgent">
 
     <br>
 
     <label for="done">Done: </label>
-    <input type="checkbox" id="done" name="done" th:checked="${isDone}">
+    <input type="checkbox" id="done" name="done">
 
     <br>
 
