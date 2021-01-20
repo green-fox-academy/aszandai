@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "todo")
 public class Todo {
@@ -22,4 +22,6 @@ public class Todo {
     private String title;
     private boolean isUrgent;
     private boolean isDone;
+
+//    private List<Assignee> assigneeList;
 }

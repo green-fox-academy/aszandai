@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "assignees")
 public class Assignee {
@@ -20,4 +19,6 @@ public class Assignee {
     private Long id;
     private String name;
     private String email;
+
+//    private Todo todo;
 }

@@ -3,6 +3,7 @@
 <head>
     <title>Todo CRUD App</title>
     <meta charset="UTF-8">
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
 
@@ -24,23 +25,25 @@
 
 <br><br>
 
-<table border="1">
+<table class="table table-striped table-hover">
+    <thead>
     <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Urgent</th>
-        <th>Done</th>
-        <th>Delete todo</th>
-        <th>Edit todo</th>
-        <th>Assignee</th>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Urgent</th>
+        <th scope="col">Done</th>
+        <th scope="col">Delete todo</th>
+        <th scope="col">Edit todo</th>
+        <th scope="col">Assignee</th>
     </tr>
-    <tr th:each="todo: ${todos}">
-        <td th:text="${todo.id}"></td>
+    </thead>
+    <tr scope="row" th:each="todo: ${todos}">
+        <th th:text="${todo.id}"></th>
         <td th:text="${todo.title}"></td>
         <td th:text="${todo.urgent}"></td>
         <td th:text="${todo.done}"></td>
-        <td><a th:href="'/todo/' + ${todo.id} + '/delete'">Delete</a></td>
-        <td><a th:href="'/todo/' + ${todo.id} + '/edit'">Edit</a></td>
+        <td><a class="btn btn-outline-secondary" th:href="'/todo/' + ${todo.id} + '/edit'">Edit</a></td>
+        <td><a class="btn btn-outline-danger" th:href="'/todo/' + ${todo.id} + '/delete'">Delete</a></td>
     </tr>
 </table>
 
