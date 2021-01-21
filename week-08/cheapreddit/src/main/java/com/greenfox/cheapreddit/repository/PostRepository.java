@@ -9,8 +9,8 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends CrudRepository<Post, Long> {
-    @Query("SELECT post FROM Post post order by post.voteCount desc")
-    List<Post> findTopPosts();
+    @Query(value = "SELECT * FROM posts order by vote_count desc limit 10", nativeQuery = true)
+    List<Post> findTopPostsNative();
 
 
 }

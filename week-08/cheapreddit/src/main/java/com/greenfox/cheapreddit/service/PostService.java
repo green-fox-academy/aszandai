@@ -62,6 +62,6 @@ public class PostService {
     }
 
     public List<Post> getHotPosts() {
-        return postRepository.findTopPosts();
+        return postRepository.findTopPostsNative();
     }
 }

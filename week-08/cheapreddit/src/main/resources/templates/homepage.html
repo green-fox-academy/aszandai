@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Cheap man's reddit</title>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
+
+<a href="/">Home page</a>
+<br>
 <a href="/submitpage">Submit new post</a>
 <br>
 <a href="/hotpage">Hot page</a>
@@ -19,15 +23,16 @@
         <td>Topic</td>
     </tr>
     <tr th:each="post: ${postList}">
+        <td th:text="${post.id}"></td>
         <td th:text="${post.voteCount}"></td>
         <td>
             <form th:action="'/upvote/' + ${post.id}" method="post">
-                <button type="submit" name="upvote"> + </button>
+                <button type="submit" name="upvote"> +</button>
             </form>
         </td>
         <td>
             <form th:action="'/downvote/' + ${post.id}" method="post">
-                <button type="submit" name="downvote"> - </button>
+                <button type="submit" name="downvote"> -</button>
             </form>
         </td>
         <td>
