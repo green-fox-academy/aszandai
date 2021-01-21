@@ -49,4 +49,17 @@ public class PostController {
         return "redirect:/";
     }
 
+    @GetMapping("/post/{id}")
+    public String getPostRead(@PathVariable long id, Model model) {
+        model.addAttribute("title", postService.getPostById(id).getTitle());
+        model.addAttribute("description", postService.getPostById(id).getDescription());
+        return "postpage";
+    }
+
+    @GetMapping("/hotpage")
+    public String hotPage(Model model) {
+        model.addAttribute("topPostList", postService.getHotPosts());
+        return "hotpage";
+    }
+
 }

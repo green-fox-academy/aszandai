@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
@@ -26,14 +27,41 @@ public class PostService {
         return (List<Post>) postRepository.findAll();
     }
 
-    public int upVoteCount(Post post, Long id) {
-        int count = (int) atomicLong.getAndIncrement();
-        post.setVoteCount(count);
-        return postRepository.save(post).getVoteCount();
+    public Post getPostById(long id) {
+        return postRepository.findById(id).orElse(null);
     }
-    public int downVoteCount(Post post, Long id) {
-        int count = (int) atomicLong.getAndDecrement();
-        post.setVoteCount(count);
-        return postRepository.save(post).getVoteCount();
+
+    public void upVoteCount(Post updatedPost, Long id) {
+        Optional<Post> optionalPost = postRepository.findById(id);
+        if (!optionalPost.isPresent()) {
+            throw new IllegalArgumentException();
+        }
+
+        Post post = optionalPost.get();
+        updatedPost.setId(id);
+        updatedPost.setTitle(post.getTitle());
+        updatedPost.setDescription(post.getDescription());
+        updatedPost.setVoteCount(post.getVoteCount() + 1);
+
+        postRepository.save(updatedPost);
+    }
+
+    public void downVoteCount(Post updatedPost, Long id) {
+        Optional<Post> optionalPost = postRepository.findById(id);
+        if (!optionalPost.isPresent()) {
+            throw new IllegalArgumentException();
+        }
+
+        Post post = optionalPost.get();
+        updatedPost.setId(id);
+        updatedPost.setTitle(post.getTitle());
+        updatedPost.setDescription(post.getDescription());
+        updatedPost.setVoteCount(post.getVoteCount() - 1);
+
+        postRepository.save(updatedPost);
+    }
+
+    public List<Post> getHotPosts() {
+        return postRepository.findTopPosts();
     }
 }
