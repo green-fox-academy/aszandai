@@ -6,10 +6,11 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Date;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "posts")
@@ -21,4 +22,10 @@ public class Post {
     private String title;
     private String description;
     private Integer voteCount = 0;
+    private Timestamp timestamp;
+
+    public Post() {
+        Date date = new Date();
+        this.timestamp = new Timestamp(date.getTime());
+    }
 }

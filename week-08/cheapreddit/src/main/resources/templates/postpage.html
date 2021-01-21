@@ -6,14 +6,31 @@
     <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/hotpage">Hot page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/submitpage">Submit new post</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+    </nav>
+    <div>
+        <h2 class="border-bottom" th:text="${title}"></h2>
+        <p th:text="${description}"></p>
+    </div>
 
-<a href="/">Home page</a>
-<br>
-<a href="/hotpage">Hot page</a>
+</div>
 
-<h2 th:text="${title}"></h2>
-
-<p th:text="${description}"></p>
 
 </body>
 </html>

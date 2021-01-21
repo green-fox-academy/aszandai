@@ -12,7 +12,6 @@ import java.util.concurrent.atomic.AtomicLong;
 @Service
 public class PostService {
     private PostRepository postRepository;
-    AtomicLong atomicLong = new AtomicLong(1);
 
     @Autowired
     public PostService(PostRepository postRepository) {

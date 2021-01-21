@@ -6,39 +6,60 @@
     <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/hotpage">Hot page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/submitpage">Submit new post</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+    </nav>
 
-<a href="/">Home page</a>
-<br>
-<a href="/submitpage">Submit new post</a>
-<br>
-<a href="/hotpage">Hot page</a>
+    <h2>Hottest of posts yooo</h2>
 
-<h1>Hot posts yooo</h1>
+    <table class="table table-striped table-hover">
+        <tr class="row" style="text-align: center">
+            <th class="col-1">Votes</th>
+            <th class="col-1">Upvote</th>
+            <th class="col-1">Downvote</th>
+            <th class="col-5">Topic</th>
+            <th class="col-2">Timestamp</th>
+        </tr>
+        <tr class="row" th:each="post: ${topPostList}">
+            <th style="text-align: center" class="col-1" th:text="${post.voteCount}"></th>
+            <td style="text-align: center" class="col-1">
+                <form th:action="'/upvote/' + ${post.id}" method="post">
+                    <button class="badge bg-light text-dark" type="submit" name="upvote">
+                        <img src="arrow-up-square-fill.svg">
+                    </button>
+                </form>
+            </td>
+            <td style="text-align: center" class="col-1">
+                <form th:action="'/downvote/' + ${post.id}" method="post">
+                    <button class="badge bg-light text-dark" type="submit" name="downvote">
+                        <img src="arrow-down-square-fill.svg">
+                    </button>
+                </form>
+            </td>
+            <td class="col-5">
+                <a th:href="'/post/' + ${post.id}" th:text="${post.title}"></a>
+            </td>
+            <td>
+                <small class="text-muted col-2" th:text="${post.timestamp}"></small>
+            </td>
+        </tr>
+    </table>
 
-<table>
-    <tr>
-        <td>Votes</td>
-        <td>Upvote</td>
-        <td>Downvote</td>
-        <td>Topic</td>
-    </tr>
-    <tr th:each="post: ${topPostList}">
-        <td th:text="${post.id}"></td>
-        <td th:text="${post.voteCount}"></td>
-        <td>
-            <form th:action="'/upvote/' + ${post.id}" method="post">
-                <button type="submit" name="upvote"> +</button>
-            </form>
-        </td>
-        <td>
-            <form th:action="'/downvote/' + ${post.id}" method="post">
-                <button type="submit" name="downvote"> -</button>
-            </form>
-        </td>
-        <td>
-            <a th:href="'/post/' + ${post.id}" th:text="${post.title}"></a>
-        </td>
-    </tr>
-</table>
+</div>
 </body>
 </html>

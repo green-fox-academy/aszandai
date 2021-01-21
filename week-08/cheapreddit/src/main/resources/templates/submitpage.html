@@ -6,19 +6,62 @@
     <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<form action="/submitpage" method="post">
-    <label for="title"> Post title </label>
-    <input type="text" id="title" name="title" required>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/hotpage">Hot page</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/submitpage">Submit new post</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-dark" type="submit">Search</button>
+        </form>
+    </nav>
 
-    <br>
+    <h2>Submit new post</h2>
 
-    <label for="description"> Post description </label>
-    <input type="text" id="description" name="description" required>
+    <div>
+        <form action="/submitpage" method="post">
+            <div class="mb-3">
+                <label for="title" class="col-form-label">Post title:</label>
+                <input type="text" class="form-control" id="title" name="title">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="col-form-label">Post description:</label>
+                <textarea class="form-control" id="description" name="description" style="height: 250px"></textarea>
+            </div>
+            <button class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal" type="button">
+                Save
+            </button>
+            <a class="btn btn-outline-secondary" href="/">Cancel</a>
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Holy nice!</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>There's no way back... </p>
+                            <p>You made a new post, thank you for your contribution.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-secondary">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
-    <br>
-
-    <button type="submit"> Save</button>
-    <a href="/">Cancel</a>
-</form>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
 </body>
 </html>
