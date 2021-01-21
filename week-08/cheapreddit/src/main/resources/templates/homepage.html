@@ -5,15 +5,29 @@
     <title>Cheap man's reddit</title>
 </head>
 <body>
-<a href="/submit">Submit new post</a>
+<a href="/submitpage">Submit new post</a>
 
 <h2>Trending posts</h2>
 
 <table>
+    <tr>
+        <td>Votes</td>
+        <td>Upvote</td>
+        <td>Downvote</td>
+        <td>Topic</td>
+    </tr>
     <tr th:each="post: ${postList}">
-        <td th:text="${post.id}"></td>
-<!--        <td th:text="${post.upvote}"></td>-->
-<!--        <td th:text="${post.downvote}"></td>-->
+        <td th:text="${post.voteCount}"></td>
+        <td>
+            <form th:action="'/upvote/' + ${post.id}" method="post">
+                <button type="submit" name="upvote"> upvote </button>
+            </form>
+        </td>
+        <td>
+            <form th:action="'/downvote/' + ${post.id}" method="post">
+                <button type="submit" name="downvote"> downvote </button>
+            </form>
+        </td>
         <td th:text="${post.title}"></td>
     </tr>
 </table>

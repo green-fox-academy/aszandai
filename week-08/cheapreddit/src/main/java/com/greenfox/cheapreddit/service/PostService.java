@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class PostService {
     private PostRepository postRepository;
+    AtomicLong atomicLong = new AtomicLong(1);
 
     @Autowired
     public PostService(PostRepository postRepository) {
@@ -24,14 +26,14 @@ public class PostService {
         return (List<Post>) postRepository.findAll();
     }
 
-    public void upVoteCount(Post post) {
-        int counter = 0;
-        counter++;
-        post.setVoteCount(counter);
+    public int upVoteCount(Post post, Long id) {
+        int count = (int) atomicLong.getAndIncrement();
+        post.setVoteCount(count);
+        return postRepository.save(post).getVoteCount();
     }
-    public void downVoteCount(Post post) {
-        int counter = 0;
-        counter--;
-        post.setVoteCount(counter);
+    public int downVoteCount(Post post, Long id) {
+        int count = (int) atomicLong.getAndDecrement();
+        post.setVoteCount(count);
+        return postRepository.save(post).getVoteCount();
     }
 }
