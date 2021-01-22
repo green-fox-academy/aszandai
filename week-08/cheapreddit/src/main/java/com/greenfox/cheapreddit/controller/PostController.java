@@ -1,28 +1,30 @@
 package com.greenfox.cheapreddit.controller;
 
 import com.greenfox.cheapreddit.model.Post;
+import com.greenfox.cheapreddit.model.User;
 import com.greenfox.cheapreddit.service.PostService;
+import com.greenfox.cheapreddit.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class PostController {
 
     private PostService postService;
+    private UserService userService;
 
     @Autowired
-    public PostController(PostService postService) {
+    public PostController(PostService postService, UserService userService) {
         this.postService = postService;
+        this.userService = userService;
     }
 
     @GetMapping("/")
-    public String homePage(Model model) {
+    public String homePage(Model model, User user) {
         model.addAttribute("postList", postService.postListFindAll());
+        model.addAttribute("name", userService.userLogin(user.getName()));
         return "homepage";
     }
 
@@ -62,4 +64,12 @@ public class PostController {
         return "hotpage";
     }
 
+    @GetMapping("/page/{pageId}")
+    public String pagination(@PathVariable(value = "1") int pageId, Model model) {
+        int pageLimit = 10;
+        int pageOffset = 1;
+        model.addAttribute("pageId", pageId);
+        model.addAttribute("postPageList", postService.getPostsWithPageLimit(pageLimit, pageOffset));
+        return "pagetest";
+    }
 }

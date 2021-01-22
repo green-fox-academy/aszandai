@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class PostService {
@@ -63,4 +62,9 @@ public class PostService {
     public List<Post> getHotPosts() {
         return postRepository.findTopPostsNative();
     }
+
+    public List<Post> getPostsWithPageLimit(int pageLimit, int pageOffset) {
+        return postRepository.findPagePostsNative(pageLimit,pageOffset);
+    }
+
 }
