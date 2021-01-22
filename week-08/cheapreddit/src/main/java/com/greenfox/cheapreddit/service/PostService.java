@@ -3,6 +3,9 @@ package com.greenfox.cheapreddit.service;
 import com.greenfox.cheapreddit.model.Post;
 import com.greenfox.cheapreddit.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -63,8 +66,13 @@ public class PostService {
         return postRepository.findTopPostsNative();
     }
 
-    public List<Post> getPostsWithPageLimit(int pageLimit, int pageOffset) {
-        return postRepository.findPagePostsNative(pageLimit,pageOffset);
+    public Page<Post> getPages(Integer pageNumber) {
+        Pageable pageable = PageRequest.of(pageNumber, 10);
+        return postRepository.findPagePostsNative(pageable);
+    }
+
+    public Integer getPageCount () {
+        return (int) (Math.ceil(postRepository.count() / 10d));
     }
 
 }

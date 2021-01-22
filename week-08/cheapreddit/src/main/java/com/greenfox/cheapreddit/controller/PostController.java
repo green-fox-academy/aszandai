@@ -22,9 +22,12 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public String homePage(Model model, User user) {
-        model.addAttribute("postList", postService.postListFindAll());
+    public String homePage(Model model, User user, @RequestParam(defaultValue = "0", required = false) Integer page) {
+        model.addAttribute("postList", postService.getPages(page));
         model.addAttribute("name", userService.userLogin(user.getName()));
+        model.addAttribute("currentPage", page);
+        model.addAttribute("pageCount", postService.getPageCount());
+
         return "homepage";
     }
 
@@ -62,14 +65,5 @@ public class PostController {
     public String hotPage(Model model) {
         model.addAttribute("topPostList", postService.getHotPosts());
         return "hotpage";
-    }
-
-    @GetMapping("/page/{pageId}")
-    public String pagination(@PathVariable(value = "1") int pageId, Model model) {
-        int pageLimit = 10;
-        int pageOffset = 1;
-        model.addAttribute("pageId", pageId);
-        model.addAttribute("postPageList", postService.getPostsWithPageLimit(pageLimit, pageOffset));
-        return "pagetest";
     }
 }
