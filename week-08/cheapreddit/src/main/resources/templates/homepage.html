@@ -44,7 +44,7 @@
             <li class="page-item">
                 <a th:text="${currentPage + 1}" class="page-link"></a>
             </li>
-            <li class="page-item">
+            <li class="page-item" th:if="${pageCount} > ${currentPage}">
                 <a th:text="${currentPage + 2}" class="page-link" th:href="'/?page=' + ${currentPage +1}"></a>
             </li>
         </ul>

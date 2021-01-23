@@ -71,8 +71,8 @@ public class PostService {
         return postRepository.findPagePostsNative(pageable);
     }
 
-    public Integer getPageCount () {
-        return (int) (Math.ceil(postRepository.count() / 10d));
+    public long getPageCount () {
+        return postRepository.count() / 10;
     }
 
 }
