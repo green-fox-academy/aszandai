@@ -22,7 +22,7 @@ public class PostController {
     }
 
     @GetMapping("/")
-    public String homePage(Model model, User user, @RequestParam(defaultValue = "0", required = false) Integer page) {
+    public String homePage(Model model, @ModelAttribute User user, @RequestParam(defaultValue = "0", required = false) Integer page) {
         model.addAttribute("postList", postService.getPages(page));
         model.addAttribute("name", userService.userLogin(user.getName()));
         model.addAttribute("currentPage", page);

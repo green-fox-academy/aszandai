@@ -33,8 +33,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String userLoginSubmit(String name) {
-        userService.userLogin(name);
+    public String userLoginSubmit(@ModelAttribute User user) {
+        userService.userLogin(user.getName());
         return "redirect:/";
     }
 }
