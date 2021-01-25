@@ -1,10 +1,12 @@
-package com.greenfox.restdemo.model;
+package com.greenfox.restdemo.model.doubling;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Doubling {
     private Integer received;
     private Integer result;

@@ -1,4 +1,4 @@
-package com.greenfox.restdemo.model;
+package com.greenfox.restdemo.model.doubling;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
