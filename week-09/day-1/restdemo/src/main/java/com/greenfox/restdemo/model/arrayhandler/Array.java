@@ -1,6 +1,6 @@
-package com.greenfox.restdemo.model.dountil;
+package com.greenfox.restdemo.model.arrayhandler;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonFilter;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +10,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DoUntil {
-    private int until;
+public class Array {
+    private String what;
     private int result;
+    private int[] numbers;
 }

@@ -1,7 +1,9 @@
 package com.greenfox.restdemo.controller;
 
+import com.greenfox.restdemo.model.arrayhandler.Array;
 import com.greenfox.restdemo.model.dountil.DoUntil;
 import com.greenfox.restdemo.service.appenda.AppendService;
+import com.greenfox.restdemo.service.arrayhandler.ArrayService;
 import com.greenfox.restdemo.service.doubling.DoublingService;
 import com.greenfox.restdemo.service.dountil.DoUntilService;
 import com.greenfox.restdemo.service.greeter.GreeterService;
@@ -15,13 +17,19 @@ public class MainRESTController {
     private GreeterService greeterService;
     private AppendService appendService;
     private DoUntilService doUntilService;
+    private ArrayService arrayService;
 
     @Autowired
-    public MainRESTController(DoublingService doublingService, GreeterService greeterService, AppendService appendService, DoUntilService doUntilService) {
+    public MainRESTController(DoublingService doublingService,
+                              GreeterService greeterService,
+                              AppendService appendService,
+                              DoUntilService doUntilService,
+                              ArrayService arrayService) {
         this.doublingService = doublingService;
         this.greeterService = greeterService;
         this.appendService = appendService;
         this.doUntilService = doUntilService;
+        this.arrayService = arrayService;
     }
 
     @GetMapping("/doubling")
@@ -41,7 +49,7 @@ public class MainRESTController {
     }
 
     @PostMapping("/dountil/{action}")
-    public ResponseEntity<?> postSumOfValue(@PathVariable String action, @RequestBody DoUntil doUntil) {
+    public ResponseEntity<?> postValueOfAction(@PathVariable String action, @RequestBody DoUntil doUntil) {
         if (action.equals("sum")) {
             return doUntilService.getSum(doUntil.getUntil());
         }
@@ -49,6 +57,11 @@ public class MainRESTController {
             return doUntilService.getFactor(doUntil.getUntil());
         }
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/arrays/{what}")
+    public ResponseEntity<?> postValueOfArray(@PathVariable String what, @RequestBody Array array) {
+        return arrayService.getSelectedMethod(what, array);
     }
 
 }
