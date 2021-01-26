@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Array {
-    private String what;
+public class ArrayDTO {
     private int result;
-    private int[] numbers;
 }

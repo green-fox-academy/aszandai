@@ -3,7 +3,6 @@ package com.greenfox.restdemo.service.arrayhandler;
 import com.greenfox.restdemo.model.arrayhandler.Array;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.Arrays;
 

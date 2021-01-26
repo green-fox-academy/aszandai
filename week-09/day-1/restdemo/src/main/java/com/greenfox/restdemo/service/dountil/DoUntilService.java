@@ -20,4 +20,13 @@ public class DoUntilService {
         return ResponseEntity.ok(doUntil.getResult());
     }
 
+    public ResponseEntity<?> getSelectedMethod(String action, DoUntil doUntil) {
+        if (action.equals("sum")) {
+            return getSum(doUntil.getUntil());
+        }
+        if (action.equals("factor")) {
+            return getFactor(doUntil.getUntil());
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
