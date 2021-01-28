@@ -1,7 +1,7 @@
 package com.resttest.controller;
 
-import com.resttest.model.Groot;
-import com.resttest.model.GrootError;
+import com.resttest.model.groot.Groot;
+import com.resttest.model.groot.GrootError;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;

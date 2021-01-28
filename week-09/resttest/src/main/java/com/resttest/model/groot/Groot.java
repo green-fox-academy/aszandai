@@ -1,4 +1,4 @@
-package com.resttest.model;
+package com.resttest.model.groot;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

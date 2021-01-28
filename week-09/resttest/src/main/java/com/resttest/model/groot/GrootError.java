@@ -1,4 +1,4 @@
-package com.resttest.model;
+package com.resttest.model.groot;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class GrootError {
-    String error;
+    private String error;
 
     public GrootError() {
         this.error = "I am Groot...";
