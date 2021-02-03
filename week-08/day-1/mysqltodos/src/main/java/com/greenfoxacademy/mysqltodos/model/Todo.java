@@ -18,10 +18,13 @@ public class Todo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "todo_id")
     private Long id;
     private String title;
     private boolean isUrgent;
     private boolean isDone;
 
-//    private List<Assignee> assigneeList;
+    @ManyToOne(cascade=CascadeType.ALL)
+    @JoinColumn(name = "assignee_id", nullable = false)
+    private Assignee assignee;
 }

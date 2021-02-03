@@ -14,7 +14,7 @@
 
 <form th:action="'/todo/' + ${id} + '/edit'" method="post">
     <label for="title"> Todo description:</label>
-    <input type="text" id="title" name="title">
+    <input type="text" id="title" name="title" th:each="todo: ${todos}" th:value="${todo.title}">
 
     <br>
 
@@ -25,6 +25,13 @@
 
     <label for="done">Done: </label>
     <input type="checkbox" id="done" name="done">
+
+    <br>
+
+    <label for="assignees">Assignee: </label>
+    <select name="assignees" id="assignees">
+        <option th:text="${assignees.name}" th:value="${assignees.name}" th:each="assignees: ${assigneeList}">
+    </select>
 
     <br>
 

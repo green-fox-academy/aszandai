@@ -18,6 +18,11 @@
 
     <br>
 
+    <label for="assignees">Assignee: </label>
+    <select name="assignees" id="assignees">
+        <option th:text="${assignees.name}" th:value="${assignees.name}" th:each="assignees: ${assigneeList}">
+    </select>
+
     <button type="submit"> Save</button>
     <a href="/todo">Cancel</a>
 </form>

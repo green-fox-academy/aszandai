@@ -6,34 +6,35 @@
     <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 <body>
-<div>
-<a href="/todo">Home</a>
-<br>
-<h2>Assignees:</h2>
+<div class="container">
+    <div>
+        <a href="/todo">Home</a>
+        <br>
+        <h2>Assignees:</h2>
 
-<a href="/assignee/add">Add new assignee</a>
+        <a href="/assignee/add">Add new assignee</a>
 
-<br><br>
+        <br><br>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email address</th>
+            <th scope="col">Delete</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Todos</th>
+        </tr>
+        </thead>
+        <tr scope="row" th:each="assignee: ${assignees}">
+            <th th:text="${assignee.id}"></th>
+            <td th:text="${assignee.name}"></td>
+            <td th:text="${assignee.email}"></td>
+            <td><a class="btn btn-outline-danger" th:href="'/assignee/' + ${assignee.id} + '/delete'">Delete</a></td>
+            <td><a class="btn btn-outline-secondary" th:href="'/assignee/' + ${assignee.id} + '/edit'">Edit</a></td>
+        </tr>
+    </table>
 </div>
-<table class="table table-striped table-hover">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email address</th>
-        <th scope="col">Delete</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Todos</th>
-    </tr>
-    </thead>
-    <tr scope="row" th:each="assignee: ${assignees}">
-        <th th:text="${assignee.id}"></th>
-        <td th:text="${assignee.name}"></td>
-        <td th:text="${assignee.email}"></td>
-        <td><a class="btn btn-outline-secondary" th:href="'/assignee/' + ${assignee.id} + '/edit'">Edit</a></td>
-        <td><a class="btn btn-outline-danger" th:href="'/assignee/' + ${assignee.id} + '/delete'">Delete</a></td>
-    </tr>
-</table>
-
 </body>
 </html>
