@@ -1,4 +1,4 @@
-package com.example.springadvanced.dao;
+package com.example.springadvanced.dao.countries;
 
 import com.example.springadvanced.dto.Countries;
 import retrofit2.Call;
@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface CountriesRetrofitDAO {
     @GET("/3/configuration/countries")
-    Call<List<Countries>> getGenres(@Query("api_key") String apiKey);
+    Call<List<Countries>> getCountries(@Query("api_key") String apiKey);
 }

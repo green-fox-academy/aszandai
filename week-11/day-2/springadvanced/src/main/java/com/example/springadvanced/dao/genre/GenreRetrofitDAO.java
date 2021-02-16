@@ -1,6 +1,6 @@
-package com.example.springadvanced.dao;
+package com.example.springadvanced.dao.genre;
 
-import com.example.springadvanced.dto.Root;
+import com.example.springadvanced.dto.genre.Root;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

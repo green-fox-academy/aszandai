@@ -1,7 +1,7 @@
 package com.example.springadvanced.service;
 
-import com.example.springadvanced.dao.GenreDAO;
-import com.example.springadvanced.dto.Root;
+import com.example.springadvanced.dao.genre.GenreDAO;
+import com.example.springadvanced.dto.genre.Root;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

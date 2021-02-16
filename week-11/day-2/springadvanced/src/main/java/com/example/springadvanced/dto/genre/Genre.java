@@ -1,4 +1,4 @@
-package com.example.springadvanced.dto;
+package com.example.springadvanced.dto.genre;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

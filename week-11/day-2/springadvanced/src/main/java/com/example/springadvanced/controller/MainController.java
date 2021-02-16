@@ -1,10 +1,11 @@
 package com.example.springadvanced.controller;
 
 import com.example.springadvanced.dto.Countries;
-import com.example.springadvanced.dto.Genre;
-import com.example.springadvanced.dto.Root;
+import com.example.springadvanced.dto.genre.Root;
+import com.example.springadvanced.dto.popular.RootPopular;
 import com.example.springadvanced.service.CountriesService;
 import com.example.springadvanced.service.GenreService;
+import com.example.springadvanced.service.PopularService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +19,15 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    private CountriesService countriesService;
-    private GenreService genreService;
+    private final CountriesService countriesService;
+    private final GenreService genreService;
+    private final PopularService popularService;
 
     @Autowired
-    public MainController(CountriesService countriesService, GenreService genreService) {
+    public MainController(CountriesService countriesService, GenreService genreService, PopularService popularService) {
         this.countriesService = countriesService;
         this.genreService = genreService;
+        this.popularService = popularService;
     }
 
     @GetMapping("/countries")
@@ -43,6 +46,17 @@ public class MainController {
         try {
             Root root = genreService.fetchGenres(apiKey);
             return new ResponseEntity(root, HttpStatus.OK);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @GetMapping("/popular")
+    public ResponseEntity getPopularMovies(@RequestParam(value = "api_key") String apiKey) {
+        try {
+            RootPopular rootPopular = popularService.fetchPopularMovies(apiKey);
+            return new ResponseEntity(rootPopular, HttpStatus.OK);
         } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

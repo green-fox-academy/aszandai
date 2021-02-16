@@ -1,6 +1,6 @@
 package com.example.springadvanced.service;
 
-import com.example.springadvanced.dao.CountriesDAO;
+import com.example.springadvanced.dao.countries.CountriesDAO;
 import com.example.springadvanced.dto.Countries;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
