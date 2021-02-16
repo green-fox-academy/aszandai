@@ -1,7 +1,7 @@
 package com.example.springadvanced.service;
 
-import com.example.springadvanced.dao.CountriesDAOImpl;
-import com.example.springadvanced.model.Countries;
+import com.example.springadvanced.dao.CountriesDAO;
+import com.example.springadvanced.dto.Countries;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +12,9 @@ import java.util.List;
 public class CountriesService {
 
     @Autowired
-    private CountriesDAOImpl genreDAO;
+    private CountriesDAO countriesDAO;
 
-    public List<Countries> fetchGenres(String apiKey) throws IOException {
-        return genreDAO.fetchGenres(apiKey);
+    public List<Countries> fetchCountries(String apiKey) throws IOException {
+        return countriesDAO.fetchCountries(apiKey);
     }
 }

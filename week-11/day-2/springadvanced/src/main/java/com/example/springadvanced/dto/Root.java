@@ -1,4 +1,4 @@
-package com.example.springadvanced.model;
+package com.example.springadvanced.dto;
 
 import lombok.Getter;
 import lombok.Setter;
