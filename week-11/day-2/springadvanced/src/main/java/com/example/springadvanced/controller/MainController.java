@@ -41,10 +41,8 @@ public class MainController {
     @GetMapping("/list")
     public ResponseEntity getGenres(@RequestParam(value = "api_key") String apiKey) {
         try {
-            Root root = new Root();
-            List<Genre> genres = genreService.fetchGenres(apiKey);
-            root.setGenres(genres);
-            return new ResponseEntity(root.getGenres(), HttpStatus.OK);
+            Root root = genreService.fetchGenres(apiKey);
+            return new ResponseEntity(root, HttpStatus.OK);
         } catch (IOException e) {
             e.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

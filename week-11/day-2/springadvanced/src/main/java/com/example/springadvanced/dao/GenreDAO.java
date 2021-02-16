@@ -9,18 +9,18 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import java.io.IOException;
-import java.util.List;
 
 @Repository
 public class GenreDAO {
-    public List<Genre> fetchGenres(String apiKey) throws IOException {
+    public Root fetchGenres(String apiKey) throws IOException {
         Retrofit retrofitInstance = RetrofitClientInstance.getRetrofitInstance();
 
         GenreRetrofitDAO genreRetrofitDAO = retrofitInstance.create(GenreRetrofitDAO.class);
-        Call<List<Genre>> allGenres = genreRetrofitDAO.getGenres(apiKey);
+        Call<Root> allGenres = genreRetrofitDAO.getGenres(apiKey);
 
-        Response<List<Genre>> execute = allGenres.execute();
+        Response<Root> execute = allGenres.execute();
+        Root genres = execute.body();
 
-        return execute.body();
+        return genres;
     }
 }
