@@ -1,6 +1,6 @@
-package com.example.springadvanced.dao.authentication;
+package com.example.springadvanced.dao.guestauth;
 
-import com.example.springadvanced.dto.authentication.RequestNewToken;
+import com.example.springadvanced.dto.guestauth.RequestNewToken;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

@@ -1,4 +1,4 @@
-package com.example.springadvanced.dto.authentication;
+package com.example.springadvanced.dto.guestauth;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

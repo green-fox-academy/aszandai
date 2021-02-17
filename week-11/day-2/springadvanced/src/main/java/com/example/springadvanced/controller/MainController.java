@@ -1,11 +1,11 @@
 package com.example.springadvanced.controller;
 
 import com.example.springadvanced.dto.Countries;
-import com.example.springadvanced.dto.authentication.RequestNewToken;
+import com.example.springadvanced.dto.guestauth.RequestNewToken;
 import com.example.springadvanced.dto.genre.Root;
 import com.example.springadvanced.dto.movie.RootPopular;
 import com.example.springadvanced.dto.movie.RootReview;
-import com.example.springadvanced.service.AuthenticationService;
+import com.example.springadvanced.service.GuestAuthenticationService;
 import com.example.springadvanced.service.CountriesService;
 import com.example.springadvanced.service.GenreService;
 import com.example.springadvanced.service.ReviewService;
@@ -24,20 +24,15 @@ public class MainController {
     private final CountriesService countriesService;
     private final GenreService genreService;
     private final ReviewService reviewService;
-    private final AuthenticationService authenticationService;
+    private final GuestAuthenticationService guestAuthenticationService;
 
     @Autowired
     public MainController(CountriesService countriesService, GenreService genreService,
-                          ReviewService reviewService, AuthenticationService authenticationService) {
+                          ReviewService reviewService, GuestAuthenticationService guestAuthenticationService) {
         this.countriesService = countriesService;
         this.genreService = genreService;
         this.reviewService = reviewService;
-        this.authenticationService = authenticationService;
-    }
-
-    @GetMapping("/")
-    public String homePage() {
-        return "You're logged in";
+        this.guestAuthenticationService = guestAuthenticationService;
     }
 
     @GetMapping("/countries")
@@ -88,7 +83,7 @@ public class MainController {
     @GetMapping("/new")
     public ResponseEntity<?> getNewRequestToken(@RequestParam(value = "api_key") String apiKey) {
         try {
-            RequestNewToken requestNewToken = authenticationService.fetchNewToken(apiKey);
+            RequestNewToken requestNewToken = guestAuthenticationService.fetchNewToken(apiKey);
             return new ResponseEntity<>(requestNewToken, HttpStatus.OK);
         } catch (IOException e) {
             e.printStackTrace();

@@ -15,5 +15,4 @@ public interface MovieRetrofitDAO {
 
     @GET("/3/movie/popular")
     Call<RootPopular> getPopularMovies(@Query("api_key") String apiKey);
-
 }
