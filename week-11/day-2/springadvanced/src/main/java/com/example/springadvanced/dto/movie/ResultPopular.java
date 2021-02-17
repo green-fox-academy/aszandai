@@ -1,4 +1,4 @@
-package com.example.springadvanced.dto.popular;
+package com.example.springadvanced.dto.movie;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

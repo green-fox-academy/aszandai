@@ -1,4 +1,4 @@
-package com.example.springadvanced.dto.review;
+package com.example.springadvanced.dto.movie;
 
 import lombok.Data;
 

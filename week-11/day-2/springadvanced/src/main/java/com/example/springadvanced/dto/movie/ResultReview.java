@@ -1,11 +1,11 @@
-package com.example.springadvanced.dto.review;
+package com.example.springadvanced.dto.movie;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 import java.util.Date;
 
-public @Data class ResultPreview {
+public @Data class ResultReview {
     public String author;
     @SerializedName("author_details")
     public AuthorDetails authorDetails;
