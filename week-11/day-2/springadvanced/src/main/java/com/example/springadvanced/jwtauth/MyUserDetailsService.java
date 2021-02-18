@@ -1,4 +1,4 @@
-package com.example.springadvanced.security;
+package com.example.springadvanced.jwtauth;
 
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

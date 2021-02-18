@@ -1,4 +1,4 @@
-package com.example.springadvanced.security.model;
+package com.example.springadvanced.jwtauth.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

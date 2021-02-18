@@ -1,9 +1,10 @@
-package com.example.springadvanced.security;
+package com.example.springadvanced.controller;
 
-import com.example.springadvanced.security.filter.JwtRequestFilter;
-import com.example.springadvanced.security.model.AuthenticationRequest;
-import com.example.springadvanced.security.model.AuthenticationResponse;
-import com.example.springadvanced.security.util.JwtUtil;
+import com.example.springadvanced.jwtauth.MyUserDetailsService;
+import com.example.springadvanced.jwtauth.filter.JwtRequestFilter;
+import com.example.springadvanced.jwtauth.model.AuthenticationRequest;
+import com.example.springadvanced.jwtauth.model.AuthenticationResponse;
+import com.example.springadvanced.jwtauth.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
@@ -28,14 +29,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 class Controller {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
+    private final JwtUtil jwtTokenUtil;
+    private final MyUserDetailsService userDetailsService;
 
     @Autowired
-    private JwtUtil jwtTokenUtil;
+    public Controller(AuthenticationManager authenticationManager, JwtUtil jwtTokenUtil, MyUserDetailsService userDetailsService) {
+        this.authenticationManager = authenticationManager;
+        this.jwtTokenUtil = jwtTokenUtil;
+        this.userDetailsService = userDetailsService;
+    }
 
-    @Autowired
-    private MyUserDetailsService userDetailsService;
 
     @RequestMapping({"/hello"})
     public String firstPage() {
@@ -44,7 +48,6 @@ class Controller {
 
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-
         try {
             authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword())
@@ -60,11 +63,11 @@ class Controller {
 
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }
-
 }
 
 @EnableWebSecurity
 class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private UserDetailsService myUserDetailsService;
     @Autowired
@@ -94,6 +97,5 @@ class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 exceptionHandling().and().sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-
     }
 }
